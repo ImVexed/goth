@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"io"
 	"io/ioutil"
+	"strconv"
 
 	"github.com/ImVexed/goth"
 	"golang.org/x/oauth2"
@@ -162,9 +163,19 @@ func userFromReader(r io.Reader, user *goth.User) error {
 		return err
 	}
 
+	if u.AvatarID == "" {
+		disc, err := strconv.Atoi(u.Discriminator)
+		if err != nil {
+			return err
+		}
+		defaultAvatarCode := disc % 5
+		user.AvatarURL = fmt.Sprintf("https://cdn.discordapp.com/embed/avatars/%d.png", defaultAvatarCode)
+	} else {
+		user.AvatarURL = "https://cdn.discordapp.com/avatars/" + u.ID + "/" + u.AvatarID + ".webp"
+	}
+
 	user.Name = u.Name
 	user.Email = u.Email
-	user.AvatarURL = "https://media.discordapp.net/avatars/" + u.ID + "/" + u.AvatarID + ".webp"
 	user.UserID = u.ID
 	user.Discriminator = u.Discriminator
 
