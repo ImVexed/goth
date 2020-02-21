@@ -1,10 +1,11 @@
 package soundcloud_test
 
 import (
-	"github.com/markbates/goth"
-	"github.com/markbates/goth/providers/soundcloud"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/ImVexed/goth"
+	"github.com/ImVexed/goth/providers/soundcloud"
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_Implements_Session(t *testing.T) {

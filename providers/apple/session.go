@@ -9,9 +9,9 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/ImVexed/goth"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/lestrrat-go/jwx/jwk"
-	"github.com/markbates/goth"
 	"golang.org/x/oauth2"
 )
 

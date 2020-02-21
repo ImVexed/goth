@@ -3,15 +3,15 @@ package azureadv2_test
 import (
 	"testing"
 
-	"github.com/markbates/goth"
-	"github.com/markbates/goth/providers/azureadv2"
+	"github.com/ImVexed/goth"
+	"github.com/ImVexed/goth/providers/azureadv2"
 	"github.com/stretchr/testify/assert"
 )
 
 const (
 	applicationID = "6731de76-14a6-49ae-97bc-6eba6914391e"
-	secret = "foo"
-	redirectUri = "https://localhost:3000"
+	secret        = "foo"
+	redirectUri   = "https://localhost:3000"
 )
 
 func Test_New(t *testing.T) {
