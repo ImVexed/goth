@@ -171,7 +171,11 @@ func userFromReader(r io.Reader, user *goth.User) error {
 		defaultAvatarCode := disc % 5
 		user.AvatarURL = fmt.Sprintf("https://cdn.discordapp.com/embed/avatars/%d.png", defaultAvatarCode)
 	} else {
-		user.AvatarURL = "https://cdn.discordapp.com/avatars/" + u.ID + "/" + u.AvatarID + ".webp"
+		if u.AvatarID[:2] == "a_" {
+			user.AvatarURL = "https://cdn.discordapp.com/avatars/" + u.ID + "/" + u.AvatarID[2:] + ".gif"
+		} else {
+			user.AvatarURL = "https://cdn.discordapp.com/avatars/" + u.ID + "/" + u.AvatarID + ".webp"
+		}
 	}
 
 	user.Name = u.Name
